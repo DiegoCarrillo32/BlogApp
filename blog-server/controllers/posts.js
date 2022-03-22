@@ -2,7 +2,9 @@ const { response } = require('express')
 const Post = require('../models/post')
 
 const createPost = async (req, res = response) => {
+    console.log('TRATANDI DE SUBI POST');
     try {
+        console.log(req);
         const newPost = new Post(req.body);
         await newPost.save();
         res.json({
