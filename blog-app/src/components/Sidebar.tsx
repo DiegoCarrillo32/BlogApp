@@ -26,6 +26,7 @@ export const Sidebar = () => {
         <span className='sidebar_label' onClick={ ()=>handleNav('/dashboard') } >Crear post</span>
         <span className='sidebar_label' onClick={ ()=>handleNav('/about') } >About me</span>
         <span className='sidebar_label' onClick={ ()=>handleNav('/contact') } >Contact me</span>
+        <span className='sidebar_label' onClick={ ()=>handleNav('/home') } >Home</span>
         <span className='sidebar_label' onClick={handleExit} >Salir <LogoutOutlined /> </span>
     </div>
   )

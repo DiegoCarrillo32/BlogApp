@@ -44,7 +44,7 @@ export const AppRouter = () => {
                 <Route path="/" element={<PrivateRoute Authenticated={Authenticated} />} >
                     <Route  path="/dashboard" element={<Dashboard/>} ></Route>
                 </Route>
-                <Route path="*" element={<Navigate to="/home" replace />}/>
+                <Route path="/*" element={<Navigate to="/home" replace />}/>
             </Routes>
         </BrowserRouter>
     )

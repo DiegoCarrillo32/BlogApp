@@ -7,6 +7,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import '../styles/write.css'
 import { PostContext } from '../context/PostContext';
 import { UserContext } from '../context/UserContext';
+import { notify } from '../helpers/toast';
 
 
 export const WritePost = () => {
@@ -16,11 +17,13 @@ export const WritePost = () => {
     body:'',
     author:''
   })
+  
   const { newPost } = useContext<any>(PostContext)
   const { User } = useContext<any>(UserContext)
 
   const onEditorStateChange = (editorState:any) => {
     setEditorState(editorState)
+    
     setForm({
       ...Form,
       body: draftToHtml(convertToRaw(editorState.getCurrentContent()))
@@ -29,21 +32,15 @@ export const WritePost = () => {
 
   const onSubmit = (e:any) => {
     e.preventDefault()
-    console.log(User);
     
     setForm({
       ...Form,
       author: User.dbUser.name
     })
     const {author, body, title} = Form;
-
     console.log(Form);
     const res =newPost(title, author, body)
-    if(res){
-      alert('Post succesfully uploaded')
-    }else{
-      alert('error when uploading post')
-    }
+    res ? notify('Post succesfully uploaded', true) : notify('Error when trying to upload post', false)
     
     
   }
