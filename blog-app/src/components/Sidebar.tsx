@@ -12,13 +12,20 @@ export const Sidebar = () => {
     logout()
     navigate('/home')
   }
+  const handleNav = (nav:string) => {
+
+    navigate(nav)
+  }
+  
 
   return (
 
 
     <div className='sidebar_container'>
         <img src={logo} ></img>
-        <span className='sidebar_label'>Crear post</span>
+        <span className='sidebar_label' onClick={ ()=>handleNav('/dashboard') } >Crear post</span>
+        <span className='sidebar_label' onClick={ ()=>handleNav('/about') } >About me</span>
+        <span className='sidebar_label' onClick={ ()=>handleNav('/contact') } >Contact me</span>
         <span className='sidebar_label' onClick={handleExit} >Salir <LogoutOutlined /> </span>
     </div>
   )

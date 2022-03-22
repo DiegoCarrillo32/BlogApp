@@ -2,22 +2,37 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles/login.css'
 import logo from '../img/DCCODE.jpg'
-import { fetchAPI } from '../helpers/fetch'
 import { UserContext } from '../context/UserContext'
+import { notify } from '../helpers/toast';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure();
 
 export const Login = () => {
   const navigate = useNavigate()
-  const {login} = useContext <any> (UserContext)
+  const {login, Authenticated} = useContext <any> (UserContext)
   const [Form, setForm] = useState({})
 
-  const onSubmit = async (e:any) => {
+  useEffect(() => {
+    
+    if(Authenticated){
+      
+      navigate('/dashboard')
+      
+    }
+  
+  }, [])
+  
+
+  const onSubmit =  async (e:any) => {
     e.preventDefault();
     const {email, password}:any = Form;
-    const res = await login(email, password)
+    const res =  await login(email, password)
+  
     if(res){
-      navigate('/dashboard')
+      notify('Logged in succesfully', true)
     }else{
-      alert('CANT GO FURTHER')
+      notify('Wrong email or password', false)
     }
     
   }
@@ -30,11 +45,7 @@ export const Login = () => {
   
   }
 
-  useEffect(() => {
-    
-    
-    
-  }, [])
+
   
 
   return (
