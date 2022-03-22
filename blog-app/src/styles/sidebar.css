@@ -1,0 +1,18 @@
+.sidebar_container {
+
+    
+    height: 100vh;
+    width: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.sidebar_label {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}

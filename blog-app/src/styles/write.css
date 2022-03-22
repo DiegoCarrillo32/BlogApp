@@ -1,0 +1,70 @@
+.writepost_container {
+    height: 100vh;
+    width: 100%;
+    background-color: #323232;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.writepost_form {
+    height: 100%;
+    width: 1140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.writepost_input_container {
+    width: 700px;
+    display: flex;
+
+}
+.writepost_title {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #323232;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #323232;
+}
+.writepost_img {
+    display: none;
+}
+
+.writepost_textarea {
+    width: 700px;
+    height: 600px;
+    resize: none;
+}
+
+.writepost_button {
+    margin-top: 10px;
+    width: 350px;
+    height: 50px;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.writepost_file_upload {
+    width:10%
+}
+
+.editorClassName {
+    background-color: white;
+    height: 300px;
+    font-size: 1.6rem;
+    
+}
+
+.editor_container {
+    height: 350px;
+}
