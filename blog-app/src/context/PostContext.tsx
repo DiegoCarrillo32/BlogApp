@@ -26,10 +26,19 @@ export const PostProvider = ({ children }: any) => {
         return res.ok
     }
 
+    const newPost = async (title:string, author:string, body:string) => {
+      const res = await fetchAPI('post/new', {title, author, body}, 'POST')
+      if(res.ok){
+          return true
+      }else {
+          return false
+      }
+    }
+
 
     return (
         <PostContext.Provider value={{
-            PostM, getPost
+            PostM, getPost, newPost
         }}>
             {children}
         </PostContext.Provider>
