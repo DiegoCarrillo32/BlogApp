@@ -72,7 +72,19 @@ const loginUser = async (req, res = response) => {
 
 }
 
+const renewUser = async(req, res = response) => {
+    const uid = req.uid;
+    const token = await generateJWT(uid)
+    const dbUser =await User.findById(uid)
+    res.json({
+        ok: true,
+        dbUser,
+        token
+    })
+}
+
 module.exports = {
     loginUser,
-    createUser
+    createUser,
+    renewUser
 }
