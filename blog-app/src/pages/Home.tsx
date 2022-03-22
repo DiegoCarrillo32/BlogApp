@@ -4,9 +4,20 @@ import { Link } from 'react-router-dom'
 import { motion } from "framer-motion"
 import logo from '../img/DCCODE.jpg'
 import '../styles/home.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
+import { PostContext } from '../context/PostContext'
+
+
+interface DataPost {
+    title:string,
+    body:string,
+    author:string,
+    time:number,
+    uid:string
+  }
 export const Home = () => {
+    const {PostM, getPost} = useContext<any>(PostContext)
     const navigate = useNavigate()
     const [Clicks, setClicks] = useState(0)
     const onClick = () => {
@@ -32,11 +43,13 @@ export const Home = () => {
         clearInterval(interval)
       }
     }, [])
+
+    useEffect(() => {
+      
+        getPost()
+      
+    }, [getPost])
     
-
-    const posts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-
 
     return (
         <>
@@ -51,12 +64,15 @@ export const Home = () => {
                 
                 <section className='home_section' >
                     {
-                        posts.slice(0, 5).map(element => (
+
+                        
+                        PostM.posts.map( ({author,body,time,title,uid}:DataPost) => (
                             <motion.div className='home_section__item' whileHover={{scale:1.01}} >
-                                <Post key={element} />
+                                <Post key={uid} author={author} body={body} time={time} title={title} uid={uid} />
                         
                             </motion.div>
-                        ))
+                        ) )
+                 
                     }
                     <span className='home_section__item load_more'>Cargar mas publicaciones?</span>
                 </section>

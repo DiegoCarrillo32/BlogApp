@@ -2,8 +2,14 @@ import React from 'react'
 import '../styles/post.css'
 import { DislikeOutlined, LikeOutlined, ShareAltOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router'
-
-export const Post = () => {
+interface DataPost {
+  title:string,
+  body:string,
+  author:string,
+  time:number,
+  uid:string
+}
+export const Post = ({author,body,time,title,uid}:DataPost) => {
 
   const navigate = useNavigate()
 
@@ -12,10 +18,12 @@ export const Post = () => {
   }
   return (
     <div className='post_container'>
-        <h1 className='post_title' >POST TITLTE</h1>
+        <h1 className='post_title' > {title} </h1>
+        <h4> {author} </h4>
         <img src=''></img>
 
-        <p className='post_description' > Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis unde distinctio animi quidem, necessitatibus voluptatibus architecto iure cupiditate sed consequatur maxime molestiae dolorum commodi laboriosam cumque dolor culpa ipsum quae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga error dolor eos aperiam incidunt nobis maxime, nemo, perferendis harum sequi asperiores, expedita deleniti officiis molestiae. Nemo inventore optio nisi aliquam.</p>
+        <p className='post_description' > {body} </p>
+        <span> {time} - {uid} </span>
         <div>
           <LikeOutlined/><DislikeOutlined /><ShareAltOutlined />
         </div>
